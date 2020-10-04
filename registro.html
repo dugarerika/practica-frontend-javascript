@@ -10,10 +10,9 @@
 <body>
     <header>
         <div class="menu">
-                <a href="#">Registro</a>
-                <a href="./index.html">Login</a>
+            <a href="#">Registro</a>
+            <a href="./index.html">Login</a>
         </div>
-        <h1></h1>
     </header>
     <main >
         <p class = "jumbo">Registro</p>
@@ -24,35 +23,37 @@
             <div>
                 <input type="text" name="" id="i_apellido" placeholder="Apellido">
             </div>
-            <div>
+            <div id="f_radiobtn">
                 <label for="genero">Genero</label><br>
-                <input type="radio" id="male" name="gender" value="male">
+                <input type="radio" id="male" name="gender">
                 <label for="male">Male</label><br>
-                <input type="radio" id="female" name="gender" value="female">
+                <input type="radio" id="female" name="gender">
                 <label for="female">Female</label><br>
             </div>
-            <div>
+            <div >
                 <label for="nacionalidad">Nacionalidad</label><br>
-                <input type="radio" id="español" name="nacionalidad" value="español">
-                <label for="español">Español</label><br>
-                <input type="radio" id="extranjero" name="nacionalidad" value="extranjero">
+                <input type="radio" id="extranjero" name="nacionalidad">
                 <label for="extranjero">Extranjero</label><br>
-                <div id="paises">
-                </div>
+                <input type="radio" id="español" name="nacionalidad">
+                <label for="español">Español</label><br>
             </div>
             <div>
-                <input type="email" name="" id="i_movil" placeholder="Movil">
+                <select id="pais_provincia">
+                </select>
+            </div>
+            <div>
+                <input type="text" name="" id="i_movil" placeholder="Movil">
             </div>
             <div>
                 <input type="email" name="" id="i_mail" placeholder="E-mail">
             </div>
             <div>
-                <input type="email" usuario="" id="i_usuario" placeholder="Usuario">
+                <input type="text" usuario="" id="i_usuario" placeholder="Usuario">
             </div>
             <div>
                 <input type="password" id="i_pwd" placeholder="Contraseña">
             </div>
-            <div>
+            <div id='f_terminos'>
                 <input type="checkbox" id="terminos" name="terminos" value="terminos">
                 <label for="vehicle1"> Acepto los terminos</label><br>
             </div>

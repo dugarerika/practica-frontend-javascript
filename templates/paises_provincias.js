@@ -6,7 +6,7 @@ export const templPaises_Provincias = {
         switch (nacionalidad) {
             case 'extranjero':
                 info = `
-                <option value="Elegir" id="AF">Elegir opción</option>
+                <option value="" id="AF">Elegir opción</option>
                 <option value="Afganistán" id="AF">Afganistán</option>
                 <option value="Albania" id="AL">Albania</option>
                 <option value="Alemania" id="DE">Alemania</option>
@@ -312,9 +312,7 @@ export const templPaises_Provincias = {
         }
     
         return ` 
-        <select name="pais">
         ${info}
-        </select>
         `
     }
 }

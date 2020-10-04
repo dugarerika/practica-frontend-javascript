@@ -1,0 +1,22 @@
+{
+  "name": "practica-frontend-javascript",
+  "version": "1.0.0",
+  "description": "practica javascript frontend",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dugarerika/practica-frontend-javascript.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Erika Tavera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dugarerika/practica-frontend-javascript/issues"
+  },
+  "homepage": "https://github.com/dugarerika/practica-frontend-javascript#readme"
+}
