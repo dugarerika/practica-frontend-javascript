@@ -10,58 +10,74 @@
 <body>
     <header>
         <div class="menu">
-            <a href="#">Registro</a>
-            <a href="./index.html">Login</a>
+            <a href="./index.html">Inicio</a>
+            <a href="./login.html">Login</a>
         </div>
     </header>
     <main >
         <p class = "jumbo">Registro</p>
         <form id='f_registro' action="">
             <div>
-                <input type="text" name="" id="i_nombre" placeholder="Nombre">
+                <input type="text" id="i_nombre" placeholder="Nombre" 
+                required minlength="3" maxlength="8" >
             </div>
             <div>
-                <input type="text" name="" id="i_apellido" placeholder="Apellido">
-            </div>
-            <div id="f_radiobtn">
-                <label for="genero">Genero</label><br>
-                <input type="radio" id="male" name="gender">
-                <label for="male">Male</label><br>
-                <input type="radio" id="female" name="gender">
-                <label for="female">Female</label><br>
-            </div>
-            <div >
-                <label for="nacionalidad">Nacionalidad</label><br>
-                <input type="radio" id="extranjero" name="nacionalidad">
-                <label for="extranjero">Extranjero</label><br>
-                <input type="radio" id="español" name="nacionalidad">
-                <label for="español">Español</label><br>
+                <input type="text" id="i_apellido" placeholder="Apellido" 
+                required minlength="3" maxlength="8">
             </div>
             <div>
-                <select id="pais_provincia">
+                <input type="radio" id="hombre" name="gender" value="Hombre" required>
+                <label for="hombre">Hombre</label>
+                <input type="radio" id="mujer" name="gender" value="Mujer">
+                <label for="mujer">Mujer</label>
+                <input type="radio" id="otros" name="gender" value="Otros">
+                <label for="otros">Otros</label>
+            </div>
+            <div>
+                <label for="nacionalidad">Nacionalidad</label>
+                <select id="nacionalidad" required>
+                    <option value="">Elegir opción</option>
+                    <option value="español">Español</option>
+                    <option value="extranjero">Extranjero</option>
+                </select>
+            </div>
+            <div class="nodisplay">
+                <select id="pais_provincia" required>
                 </select>
             </div>
             <div>
-                <input type="text" name="" id="i_movil" placeholder="Movil">
+                <input type="text" id="i_movil" placeholder="Movil" 
+                required minlength="9" maxlength="12">
             </div>
             <div>
-                <input type="email" name="" id="i_mail" placeholder="E-mail">
+                <input type="email" id="i_mail" placeholder="E-mail" 
+                required>
             </div>
             <div>
-                <input type="text" usuario="" id="i_usuario" placeholder="Usuario">
+                <input type="text" id="i_usuario" placeholder="Usuario" 
+                required minlength="3" maxlength="8">
             </div>
             <div>
-                <input type="password" id="i_pwd" placeholder="Contraseña">
+                <input type="password" id="i_pwd" placeholder="Contraseña" 
+                required>
+            </div>
+            <div>
+                <input type="password" id="i_conf_pwd" placeholder="Confirmar Contraseña" 
+                required>
+            </div>
+            <div>
+                <input type="text" usuario="" id="i_api_key" placeholder="Apy_Key" 
+                required minlength="5" maxlength="8">
             </div>
             <div id='f_terminos'>
-                <input type="checkbox" id="terminos" name="terminos" value="terminos">
+                <input type="checkbox" id="terminos" value="terminos" required>
                 <label for="vehicle1"> Acepto los terminos</label><br>
             </div>
             <div>
-                <textarea name="message" placeholder="Comentarios"></textarea>
+                <textarea id="comentarios" placeholder="Comentarios"></textarea>
             </div>
             <div>
-                <button type="button" id="b_registrar">Registrar</button>
+                <button type="submit" id="b_registrar">Registrar</button>
             </div>
         </form>
     </main>

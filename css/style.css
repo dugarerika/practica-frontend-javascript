@@ -79,3 +79,7 @@ main div {
 input {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.nodisplay {
+  display: none !important;
+}

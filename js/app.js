@@ -3,130 +3,71 @@ import { templPaises_Provincias } from '../templates/paises_provincias.js'
 function main (){
 
     const storeUsers = 'usuarios'
+    // Nodos del DOM
+    const form = document.querySelector('#f_registro')
+    const nombre = form.querySelector('input#i_nombre')
+    const apellido = form.querySelector('input#i_apellido')
+    const aGenero = [...form.querySelectorAll('[name="gender"]')]
+    const movil = form.querySelector('input#i_movil')
+    const mail = form.querySelector('input#i_mail')
+    const usuario = form.querySelector('input#i_usuario')
+    const pwd = form.querySelector('input#i_pwd')
+    const conf_pwd = form.querySelector('input#i_conf_pwd')
+    const nacionalidad = form.querySelector('select#nacionalidad')
+    const pais_provincia = form.querySelector('#pais_provincia')
+    const api_key = form.querySelector('input#i_api_key')
+    const terminos = form.querySelector('input#terminos')
+    const comentarios = form.querySelector('#comentarios')
 
-    const btnLog = document.querySelector('#b_login')
-    if(btnLog){
-        btnLog.addEventListener('click', onClickLog)
+    // Definicion de manejadores de eventos
+    form.addEventListener('submit', sendData)
+    nacionalidad.addEventListener('change', selectPaises_Provincias)
+
+    // Funciones manejadoras
+    function sendData(ev){
+        const data = {}
+        ev.preventDefault()
+
+        data.nombre = nombre.value
+        data.apellido = apellido.value
+        data.genero = aGenero.filter(item => item.checked)[0].value
+        data.nacionalidad = nacionalidad.value
+        data.pais_provincia = pais_provincia.value
+        data.movil = movil.value
+        data.mail = mail.value
+        data.usuario = usuario.value
+        data.pwd = pwd.value
+        data.conf_pwd = conf_pwd.value
+        data.api_key = api_key.value
+        data.terminos = terminos.checked
+        data.comentarios = comentarios.value
+        console.dir(data)
+        console.log('Obteniendo Datos', data)
+        console.log('Enviando')
+        registrar(data)
     }
 
-    const btnReg = document.querySelector('#b_registrar')
-
-    if(btnReg){
-        btnReg.addEventListener('click', onClickReg)
-    }
-
-    const radioBtnEspa = document.querySelector('#español')
-    const radioBtnExtra = document.querySelector('#extranjero')
-
-    if(radioBtnEspa){
-        radioBtnEspa.addEventListener('click', () => {
-            onClickNacionalidad(radioBtnEspa.id)
-        })
-    }
-
-    if(radioBtnExtra){
-        radioBtnExtra.addEventListener('click', () => {
-            onClickNacionalidad(radioBtnExtra.id)
-        })
-    }
-
-    function onClickNacionalidad (nacionalidad) {
-        const form = document.querySelector('#f_registro')
-        form.querySelector('#pais_provincia').innerHTML = templPaises_Provincias.render(nacionalidad)
-    }
-
-    function onClickReg(){
-        const formReg = document.querySelector('#f_registro')
-        const inputs = [...formReg.querySelectorAll('input')]
-        // const usuario = {
-        //     nombre : inputs[0].value,
-        //     apellido : inputs[1].value,
-        //     male : inputs[2].value,
-        //     female: inputs[3].value,
-        //     extran: inputs[4].value,
-        //     espa: inputs[5].value,
-        //     pais_provicia: inputs[6].value,
-        //     movil: inputs[7].value,
-        //     mail: inputs[8].value,
-        //     usuario: inputs[9].value,
-        //     pwd: inputs[10].value,
-        //     terminos: inputs[11].value
-        // }
-        console.log(inputs)
-
-        // const users = window.localStorage.getItem(storeUsers) ?
-        // JSON.parse(window.localStorage.getItem(storeUsers)) : []
-        // users.push(usuario)
-        
-        // window.localStorage.setItem(storeUsers, JSON.stringify(users))
-        // inputs.forEach(item => item.value = '')
-        validarInputs(formReg)
-        validarRadioBtn()
-        validarTerminos()
-    }
-
-    function onClickLog(){
-
-    }
-
-    function validarInputs(form){
-        const inputs = [...form.querySelectorAll('input, select')]
-        console.log(inputs)
-        inputs.forEach((item)=>{console.log(item.value)})
-        try {
-            inputs.forEach((item)=> {
-                if(!item.value){
-                    const error = new Error(`Campo ${item.id} invalido`)
-                    error.code = item.id
-                    throw error
-                }
-            })
-            return true
-        
-        } catch(error) {
-            console.log(error.message)
-            console.log(error.code)
-            return false
+    function selectPaises_Provincias() {
+        // console.dir(nacionalidad.selectedIndex)
+        if(nacionalidad.selectedIndex) {
+        pais_provincia.innerHTML = templPaises_Provincias.render(nacionalidad.value)
+        pais_provincia.parentElement.classList.remove('nodisplay')
+        } else {
+            pais_provincia.parentElement.classList.add('nodisplay')
         }
     }
 
-    function validarRadioBtn(){
-        const form = document.querySelector('#f_radiobtn')
-        const radioInputs = [...form.querySelectorAll('input')]
-        console.log(radioInputs)
-        try {
-            if(radioInputs[0].checked === false && radioInputs[1].checked === false){
-                const error = new Error(`Campos ${radioInputs[0].id} y ${radioInputs[1].id} vacios`)
-                error.code = radioInputs[0].id
-                throw error
-            }
-            return true
-        
-        } catch(error) {
-            console.log(error.message)
-            console.log(error.code)
-            return false
-        }
+    function registrar(data) {
+        const users = window.localStorage.getItem(storeUsers)?
+        JSON.parse(window.localStorage.getItem(storeUsers)) : []
+        users.push(data)
+        window.localStorage.setItem(storeUsers, JSON.stringify(users))
     }
 
-    function validarTerminos(){
-        const form = document.querySelector('#f_terminos')
-        const checkInput = [...form.querySelectorAll('input')]
-        console.log(checkInput)
-        try {
-            if(checkInput[0].checked === false ){
-                const error = new Error(`Campos ${checkInput[0].id} vacios`)
-                error.code = checkInput[0].id
-                throw error
-            }
-            return true
-        
-        } catch(error) {
-            console.log(error.message)
-            console.log(error.code)
-            return false
-        }
+    function validarUsuario(){
+
     }
+
 }
 
 document.addEventListener('DOMContentLoaded', main)
