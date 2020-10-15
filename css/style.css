@@ -3,55 +3,68 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
+
   body {
-    height: 100%;
+    min-height: 100vh;
+    margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    margin: 2;
-    font-family: Arial, Helvetica, sans-serif;
+    justify-content: space-between;
   }
   
-  /* Estilo de la barra de menú */
-  .menu {
-    position: fixed;
-    width:100%;
+   footer, header {
+    display: flex;
+    flex-direction: row;
     background-color: rgb(72, 73, 122);
+    flex-grow: 0;
+    flex-shrink: 1;
   }
-  
-  /* Estilo de los links en la barra de menú */
-  .menu a {
-    display: inline-block;
-    color: #f2f2f2;
-    text-align: justify;
-    padding: 1px 10px;
-  }
-  
-  /* Codigo para cambiar color usando hover */
-  .menu a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Style the content */
-  main {
-    background-color: #ddd;
-    top: 100rem;
-    padding: 100px;
-    height: 40rem;
-    margin-top: auto;
+/* Estilo de la barra de menú */
+.menu {
+    display: flex;
+    justify-content: flex-start;
+    width:80%;
+    align-items: center;
   }
 
-main {
-  flex: 1 0 auto;
-    margin-top: 3rem;
-    margin-left: auto;
-    margin-right: auto;
+ul{
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+
+}
+
+header .menu li {
+  padding: 0
+}
+
+  header .menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1.3rem;
+    align-items: center;
+    }
+
+  main {
+    background-color: #ddd;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 4rem 
+
+
+    
 }
 
 main form {
@@ -59,6 +72,13 @@ main form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  /* top | right | bottom | left */
+  padding: 0.2rem 4rem 2rem 4rem;
+
+  
+
 }
 main div {
   display: inline-flexbox;
@@ -76,40 +96,6 @@ input {
   display: none !important;
 }
 
-header {
-  flex: 0 0 auto;
-  justify-content: flex-start;
-}
 
-header h1 {
-  line-height: 2rem;
-}
-header .menu {
-  display: flex;
-  justify-content:flex-start;
-  
-}
 
-header .menu ul {
-  list-style: none;
-  display: flex;
-}
-
-header .menu a {
-  display: flexbox;
-  /* padding: 1rem; */
-  color: inherit;
-  text-decoration: none;
-  font-size: 1.3rem;
-}
-
-footer {
-  display: inline-flexbox;
-  justify-content: space-evenly;
-  flex: 0 0 auto
-}
-
-html{
-  height: 100%;
-}
 
