@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Practica 👋</h1>
+<h1 align="center">Welcome to Practica Frontend-JavaScript👋</h1>
 <p>
   <a href="https://www.npmjs.com/package/Base" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/Base.svg">
