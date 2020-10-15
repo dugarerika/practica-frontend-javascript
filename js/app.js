@@ -1,23 +1,16 @@
 import { templPaises_Provincias } from '../templates/paises_provincias.js'
+import { templHeader } from '../templates/header.js'
 
-function main (){
+function main() {
+
+    const posicion = window.location.pathname.lastIndexOf('/') + 1
+    const page = window.location.pathname.slice(posicion)
+    document.querySelector('header').innerHTML = templHeader.render(page)
+
 
     const storeUsers = 'usuarios'
     // Nodos del DOM
     const form = document.querySelector('#f_registro')
-    const nombre = form.querySelector('input#i_nombre')
-    const apellido = form.querySelector('input#i_apellido')
-    const aGenero = [...form.querySelectorAll('[name="gender"]')]
-    const movil = form.querySelector('input#i_movil')
-    const mail = form.querySelector('input#i_mail')
-    const usuario = form.querySelector('input#i_usuario')
-    const pwd = form.querySelector('input#i_pwd')
-    const conf_pwd = form.querySelector('input#i_conf_pwd')
-    const nacionalidad = form.querySelector('select#nacionalidad')
-    const pais_provincia = form.querySelector('#pais_provincia')
-    const api_key = form.querySelector('input#i_api_key')
-    const terminos = form.querySelector('input#terminos')
-    const comentarios = form.querySelector('#comentarios')
 
     // Definicion de manejadores de eventos
     form.addEventListener('submit', sendData)
@@ -28,6 +21,19 @@ function main (){
         const data = {}
         ev.preventDefault()
 
+        const nombre = form.querySelector('input#i_nombre')
+        const apellido = form.querySelector('input#i_apellido')
+        const aGenero = [...form.querySelectorAll('[name="gender"]')]
+        const movil = form.querySelector('input#i_movil')
+        const mail = form.querySelector('input#i_mail')
+        const usuario = form.querySelector('input#i_usuario')
+        const pwd = form.querySelector('input#i_pwd')
+        const conf_pwd = form.querySelector('input#i_conf_pwd')
+        const nacionalidad = form.querySelector('select#nacionalidad')
+        const pais_provincia = form.querySelector('#pais_provincia')
+        const api_key = form.querySelector('input#i_api_key')
+        const terminos = form.querySelector('input#terminos')
+        const comentarios = form.querySelector('#comentarios')
         data.nombre = nombre.value
         data.apellido = apellido.value
         data.genero = aGenero.filter(item => item.checked)[0].value
