@@ -13,7 +13,7 @@
     justify-content: space-between;
   }
   
-   footer, header {
+footer, header {
     display: flex;
     flex-direction: row;
     background-color: rgb(72, 73, 122);
@@ -34,7 +34,33 @@ ul{
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
+}
 
+footer {
+  display: flex;
+  flex-direction: column;
+  background-color:whitesmoke;
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+footer a {
+  color: bisque;
+  list-style: none;
+  text-decoration: none;
+}
+
+footer span {
+  /* top | right | bottom | left */
+  padding: 1rem;
 }
 
 header .menu li {
@@ -43,7 +69,7 @@ header .menu li {
 
   header .menu a {
     display: block;
-    color: white;
+    color: bisque;
     text-decoration: none;
     padding: 1rem;
     font-size: 1.3rem;
@@ -85,7 +111,7 @@ main div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    margin: 0.4rem;
+  margin: 0.4rem;
 }
 
 input {
