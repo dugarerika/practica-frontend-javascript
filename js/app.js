@@ -1,16 +1,26 @@
 import { templPaises_Provincias } from '../templates/paises_provincias.js'
 import { templHeader } from '../templates/header.js'
+import { templFooter } from '../templates/footer.js'
 
 function main() {
 
+    // Encabezado
     const posicion = window.location.pathname.lastIndexOf('/') + 1
     const page = window.location.pathname.slice(posicion)
     document.querySelector('header').innerHTML = templHeader.render(page)
 
+    // Footer
+    document.querySelector('footer').innerHTML= templFooter.render()
+
 
     const storeUsers = 'usuarios'
     // Nodos del DOM
+    // Formularios
     const formRegistro = document.querySelector('#f_registro')
+    const formLogin = document.querySelector('#f_login') 
+
+    // Botones
+    const btnAcceder = document.querySelector('#b_acceder')
 
     // Definicion de manejadores de eventos
     formRegistro.addEventListener('submit', sendData)
