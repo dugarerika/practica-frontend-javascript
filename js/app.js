@@ -17,14 +17,28 @@ function main() {
     // Nodos del DOM
     // Formularios
     const formRegistro = document.querySelector('#f_registro')
-    const formLogin = document.querySelector('#f_login') 
-
     // Botones
     const btnAcceder = document.querySelector('#b_acceder')
 
     // Definicion de manejadores de eventos
+    if(formRegistro){
     formRegistro.addEventListener('submit', sendData)
     nacionalidad.addEventListener('change', selectPaises_Provincias)
+    }
+
+
+    
+
+
+    if (btnAcceder){
+        btnAcceder.addEventListener('click', acceder)
+    }
+
+    function acceder(){
+        const formLogin = document.querySelector('#f_login') 
+        const usuarios = window.localStorage.getItem(storeUsers)
+        console.log(usuarios)
+    }
 
     // Funciones manejadoras
     function sendData(ev){
