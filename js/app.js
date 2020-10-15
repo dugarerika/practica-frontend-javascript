@@ -15,7 +15,7 @@ function main() {
 
     const storeUsers = 'usuarios'
     
-    // Nodos del DOM
+
     // Formularios
     const formRegistro = document.querySelector('#f_registro')
     const formLogin = document.querySelector('#f_login')
@@ -30,7 +30,7 @@ function main() {
     }
 
     if (formLogin){
-        formLogin.addEventListener('click', acceder)
+        formLogin.addEventListener('submit', acceder)
     }
 
     function acceder(ev1){
