@@ -14,35 +14,44 @@ function main() {
 
 
     const storeUsers = 'usuarios'
+    
     // Nodos del DOM
     // Formularios
     const formRegistro = document.querySelector('#f_registro')
-    // Botones
-    const btnAcceder = document.querySelector('#b_acceder')
+    const formLogin = document.querySelector('#f_login')
 
     // Definicion de manejadores de eventos
     if(formRegistro){
-    formRegistro.addEventListener('submit', sendData)
-    nacionalidad.addEventListener('change', selectPaises_Provincias)
-    }
-
-
+    formRegistro.addEventListener('submit', registro)
+        if(nacionalidad){
+            nacionalidad.addEventListener('change', selectPaises_Provincias)
+        }
     
-
-
-    if (btnAcceder){
-        btnAcceder.addEventListener('click', acceder)
     }
 
-    function acceder(){
-        const formLogin = document.querySelector('#f_login') 
+    if (formLogin){
+        formLogin.addEventListener('click', acceder)
+    }
+
+    function acceder(ev1){
+        const data1 = {}
+        ev1.preventDefault()
+
+        const usuarioLogin = formLogin.querySelector('input#usuario')
+        const pwdLogin = formLogin.querySelector('input#pwd')
+        data1.usuario = usuarioLogin.value
+        data1.pwd = pwdLogin.value
+        console.dir(data1)
+        console.log('Obteniendo Datos Login', data1)
+        console.log('Enviando')
+
         const usuarios = window.localStorage.getItem(storeUsers)
         console.log(usuarios)
     }
 
     // Funciones manejadoras
-    function sendData(ev){
-        const data = {}
+    function registro(ev){
+        const data2 = {}
         ev.preventDefault()
 
         const nombre = formRegistro.querySelector('input#i_nombre')
@@ -58,23 +67,23 @@ function main() {
         const api_key = formRegistro.querySelector('input#i_api_key')
         const terminos = formRegistro.querySelector('input#terminos')
         const comentarios = formRegistro.querySelector('#comentarios')
-        data.nombre = nombre.value
-        data.apellido = apellido.value
-        data.genero = aGenero.filter(item => item.checked)[0].value
-        data.nacionalidad = nacionalidad.value
-        data.pais_provincia = pais_provincia.value
-        data.movil = movil.value
-        data.mail = mail.value
-        data.usuario = usuario.value
-        data.pwd = pwd.value
-        data.conf_pwd = conf_pwd.value
-        data.api_key = api_key.value
-        data.terminos = terminos.checked
-        data.comentarios = comentarios.value
-        console.dir(data)
-        console.log('Obteniendo Datos', data)
+        data2.nombre = nombre.value
+        data2.apellido = apellido.value
+        data2.genero = aGenero.filter(item => item.checked)[0].value
+        data2.nacionalidad = nacionalidad.value
+        data2.pais_provincia = pais_provincia.value
+        data2.movil = movil.value
+        data2.mail = mail.value
+        data2.usuario = usuario.value
+        data2.pwd = pwd.value
+        data2.conf_pwd = conf_pwd.value
+        data2.api_key = api_key.value
+        data2.terminos = terminos.checked
+        data2.comentarios = comentarios.value
+        console.dir(data2)
+        console.log('Obteniendo Datos Registro', data2)
         console.log('Enviando')
-        registrar(data)
+        registrar(data2)
     }
 
     function selectPaises_Provincias() {
