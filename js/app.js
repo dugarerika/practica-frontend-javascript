@@ -10,10 +10,10 @@ function main() {
 
     const storeUsers = 'usuarios'
     // Nodos del DOM
-    const form = document.querySelector('#f_registro')
+    const formRegistro = document.querySelector('#f_registro')
 
     // Definicion de manejadores de eventos
-    form.addEventListener('submit', sendData)
+    formRegistro.addEventListener('submit', sendData)
     nacionalidad.addEventListener('change', selectPaises_Provincias)
 
     // Funciones manejadoras
@@ -21,19 +21,19 @@ function main() {
         const data = {}
         ev.preventDefault()
 
-        const nombre = form.querySelector('input#i_nombre')
-        const apellido = form.querySelector('input#i_apellido')
-        const aGenero = [...form.querySelectorAll('[name="gender"]')]
-        const movil = form.querySelector('input#i_movil')
-        const mail = form.querySelector('input#i_mail')
-        const usuario = form.querySelector('input#i_usuario')
-        const pwd = form.querySelector('input#i_pwd')
-        const conf_pwd = form.querySelector('input#i_conf_pwd')
-        const nacionalidad = form.querySelector('select#nacionalidad')
-        const pais_provincia = form.querySelector('#pais_provincia')
-        const api_key = form.querySelector('input#i_api_key')
-        const terminos = form.querySelector('input#terminos')
-        const comentarios = form.querySelector('#comentarios')
+        const nombre = formRegistro.querySelector('input#i_nombre')
+        const apellido = formRegistro.querySelector('input#i_apellido')
+        const aGenero = [...formRegistro.querySelectorAll('[name="gender"]')]
+        const movil = formRegistro.querySelector('input#i_movil')
+        const mail = formRegistro.querySelector('input#i_mail')
+        const usuario = formRegistro.querySelector('input#i_usuario')
+        const pwd = formRegistro.querySelector('input#i_pwd')
+        const conf_pwd = formRegistro.querySelector('input#i_conf_pwd')
+        const nacionalidad = formRegistro.querySelector('select#nacionalidad')
+        const pais_provincia = formRegistro.querySelector('#pais_provincia')
+        const api_key = formRegistro.querySelector('input#i_api_key')
+        const terminos = formRegistro.querySelector('input#terminos')
+        const comentarios = formRegistro.querySelector('#comentarios')
         data.nombre = nombre.value
         data.apellido = apellido.value
         data.genero = aGenero.filter(item => item.checked)[0].value
