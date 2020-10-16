@@ -55,6 +55,7 @@ function main() {
         }
         else if(usuarioEncontrado.pwd == data1.pwd){
             console.log('usuario y password correctos!')
+            window.location = 'usuario.html'
         }
         else {
             console.log('Usuario y password incorrectos!')
@@ -97,6 +98,7 @@ function main() {
         console.log('Obteniendo Datos Registro', data2)
         console.log('Enviando')
         registrar(data2)
+        window.location = 'usuario.html'
     }
 
     function selectPaises_Provincias() {
