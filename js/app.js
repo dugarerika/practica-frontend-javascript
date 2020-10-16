@@ -41,12 +41,25 @@ function main() {
         const pwdLogin = formLogin.querySelector('input#pwd')
         data1.usuario = usuarioLogin.value
         data1.pwd = pwdLogin.value
-        console.dir(data1)
-        console.log('Obteniendo Datos Login', data1)
-        console.log('Enviando')
 
-        const usuarios = window.localStorage.getItem(storeUsers)
+
+        const usuarios = window.localStorage.getItem(storeUsers) ?
+        JSON.parse(window.localStorage.getItem(storeUsers)) : []
         console.log(usuarios)
+
+        let usuarioEncontrado = usuarios.find(item => item.usuario == data1.usuario)
+        console.log(usuarioEncontrado)
+
+        if(!usuarioEncontrado){
+            console.log('usuario no encontrado')
+        }
+        else if(usuarioEncontrado.pwd == data1.pwd){
+            console.log('usuario y password correctos!')
+        }
+        else {
+            console.log('Usuario y password incorrectos!')
+        }
+
     }
 
     // Funciones manejadoras
