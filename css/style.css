@@ -12,6 +12,13 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
+  main div p{
+    color:red;
+    text-align: center;
+
+
+  }
   
 footer, header {
     display: flex;

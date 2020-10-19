@@ -121,12 +121,16 @@ function main() {
         
 
         let findUsuario = users.find( item => item.usuario.toUpperCase() == data.usuario.toUpperCase())
+        let findEmail = users.find( item => item.mail.toUpperCase() == data.mail.toUpperCase())
 
         if(data.pwd != data.conf_pwd){
-            document.querySelector('p#msg').innerHTML= 'por favor confirmar correctamente la clave'
+            document.querySelector('p#msg').innerHTML= 'por favor confirmar la clave correctamente '
         } else if(findUsuario){ 
-            document.querySelector('p#msg').innerHTML='El usuario ya existe por favor ingrese otro usuario'
-        } else {
+            document.querySelector('p#msg').innerHTML='El usuario ya ha sido registrado'
+        } else if(findEmail){
+            document.querySelector('p#msg').innerHTML='El email ya ha sido registrado'
+        }
+         else {
             users.push(data)
             window.localStorage.setItem(storeUsers, JSON.stringify(users))
             window.location = 'usuario.html'
