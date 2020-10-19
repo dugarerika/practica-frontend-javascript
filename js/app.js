@@ -46,14 +46,20 @@ function main() {
         const usuarios = window.localStorage.getItem(storeUsers) ?
         JSON.parse(window.localStorage.getItem(storeUsers)) : []
         console.log(usuarios)
+        login(usuarios,data1)
+    }
 
-        let usuarioEncontrado = usuarios.find(item => item.usuario == data1.usuario)
-        console.log(usuarioEncontrado)
+    function login(users,data){
+
+        let usuarioEncontrado = users.find(
+            item => item.usuario.toUpperCase() == data.usuario.toUpperCase()
+        )
+        console.log(users)
 
         if(!usuarioEncontrado){
             console.log('usuario no encontrado')
         }
-        else if(usuarioEncontrado.pwd == data1.pwd){
+        else if(usuarioEncontrado.pwd == data.pwd){
             console.log('usuario y password correctos!')
             window.location = 'usuario.html'
         }
