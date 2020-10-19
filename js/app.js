@@ -26,7 +26,6 @@ function main() {
         if(nacionalidad){
             nacionalidad.addEventListener('change', selectPaises_Provincias)
         }
-    
     }
 
     if (formLogin){
@@ -66,7 +65,6 @@ function main() {
         else {
             console.log('Usuario y password incorrectos!')
         }
-
     }
 
     // Funciones manejadoras
@@ -104,7 +102,7 @@ function main() {
         console.log('Obteniendo Datos Registro', data2)
         console.log('Enviando')
         registrar(data2)
-        window.location = 'usuario.html'
+        // window.location = 'usuario.html'
     }
 
     function selectPaises_Provincias() {
@@ -120,12 +118,20 @@ function main() {
     function registrar(data) {
         const users = window.localStorage.getItem(storeUsers)?
         JSON.parse(window.localStorage.getItem(storeUsers)) : []
-        users.push(data)
-        window.localStorage.setItem(storeUsers, JSON.stringify(users))
-    }
+        
 
-    function validarUsuario(){
+        let findUsuario = users.find( item => item.usuario.toUpperCase() == data.usuario.toUpperCase())
 
+        if(data.pwd != data.conf_pwd){
+            document.querySelector('p#msg').innerHTML= 'por favor confirmar correctamente la clave'
+        } else if(findUsuario){ 
+            document.querySelector('p#msg').innerHTML='El usuario ya existe por favor ingrese otro usuario'
+        } else {
+            users.push(data)
+            window.localStorage.setItem(storeUsers, JSON.stringify(users))
+            window.location = 'usuario.html'
+        }
+        
     }
 
 }
