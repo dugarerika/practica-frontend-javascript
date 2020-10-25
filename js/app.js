@@ -20,7 +20,15 @@ function main() {
     const formRegistro = document.querySelector('#f_registro')
     const formLogin = document.querySelector('#f_login')
 
+    // Botones
+    const btnMovies = document.querySelector('#b_movies')
+
     // Definicion de manejadores de eventos
+    if(btnMovies){
+        btnMovies.addEventListener('click', obtenerPeliculas)
+
+    }
+
     if(formRegistro){
     formRegistro.addEventListener('submit', registro)
         if(nacionalidad){
@@ -130,7 +138,7 @@ function main() {
         } else if(findEmail){
             document.querySelector('p#msg').innerHTML='El email ya ha sido registrado'
         }
-         else {
+        else {
             users.push(data)
             window.localStorage.setItem(storeUsers, JSON.stringify(users))
             window.location = 'usuario.html'
@@ -138,6 +146,30 @@ function main() {
         
     }
 
+    function obtenerPeliculas(){
+        const clave  = document.querySelector('#api_key').value
+        if (!clave){
+            return
+        }
+        let url ='https://api.themoviedb.org/3/movie/550?api_key=4b8423640b4850205df677351b0bb1d7'
+
+        fetch(url)
+            .then(resp => {
+                console.log(resp)
+                if(resp.status <200 || resp.status >=300){
+                    console.log(resp.statusText)
+                    throw new Error('HTTP Error' + resp.status)
+                }
+                return resp.json()
+        })
+        .then(data => procesarPeliculas(data))
+        .catch(error => alert(error.message))
+    }
+
+    function procesarPeliculas(data){
+        console.log(data)
+
+    }
 }
 
 document.addEventListener('DOMContentLoaded', main)
