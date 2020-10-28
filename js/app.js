@@ -148,10 +148,8 @@ function main() {
 
     function obtenerPeliculas(){
         const clave  = document.querySelector('#api_key').value
-        if (!clave){
-            return
-        }
-        let url ='https://api.themoviedb.org/3/movie/550?api_key=4b8423640b4850205df677351b0bb1d7'
+
+        let url ='https://api.themoviedb.org/3/movie/now_playing?api_key=4b8423640b4850205df677351b0bb1d7&language=en-US&page=1'
 
         fetch(url)
             .then(resp => {
@@ -167,7 +165,37 @@ function main() {
     }
 
     function procesarPeliculas(data){
-        console.log(data)
+        console.dir(data.results)
+
+        let html=''
+        // data.results.forEach(element => {
+        //     html += `
+        //     <tr>
+        //     <td>${element.original_title}</td>
+        //     <td><img src="https://image.tmdb.org/t/p/original/${element.poster_path}" alt=""></td>
+        //     </tr>
+        //     `
+        // })
+
+        data.results.forEach(element => {
+            html += `
+
+            <img src="https://image.tmdb.org/t/p/original/${element.poster_path}" alt="">
+            <p>${element.original_title}</p>
+            <p>${element.overview}</p>
+            `
+        })
+
+
+        document.querySelector('section.movies').innerHTML= html
+
+
+
+        // data.results.original_title
+        // data.results.backdrop_path
+        // data.results.poster_path
+        // data.results.overview
+
 
     }
 }
