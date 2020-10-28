@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario</title>
+    <link rel ="stylesheet" href="css/container.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel ="stylesheet" href="css/icons.css">
     <script type="module" src="./js/app.js"></script>
@@ -15,7 +16,13 @@
         <p>Movies</p>
         <input type="text" id="api_key">
         <button type="click" id="b_movies">Obtener Peliculas</button>
-        <section class="movies"></section>   
+        <div class="container">
+            <div class="icons"><span id="prev"><<</span></div>
+            <div class="container-movies"></div>
+            <div class="icons"><span id="next">>></span></div>
+        </div>
+
+        
         <!-- <table class="movies">
             <caption>Now Playing</caption>
             <thead>

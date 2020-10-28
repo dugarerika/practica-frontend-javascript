@@ -177,20 +177,23 @@ function main() {
         //     `
         // })
 
-        data.results.forEach(element => {
-            html += `
+        const first_four= data.results.slice(0,4)
 
+        first_four.forEach(element => {
+            html += `
+            <section class="items">
             <img src="https://image.tmdb.org/t/p/original/${element.poster_path}" alt="">
-            <p>${element.original_title}</p>
-            <p>${element.overview}</p>
+
+            </section>
             `
         })
 
 
-        document.querySelector('section.movies').innerHTML= html
+        document.querySelector('div.container-movies').innerHTML= html
 
 
-
+        // <p>${element.original_title}</p>
+        // <p>${element.overview}</p>
         // data.results.original_title
         // data.results.backdrop_path
         // data.results.poster_path

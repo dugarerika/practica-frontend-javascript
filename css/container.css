@@ -1,0 +1,141 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container-movies{
+    background-image: url("/img/background.jpg");
+    background-size: contain;
+    background-color:transparent;
+    display:flex;
+    flex-direction: row;
+    max-width: 1200px;
+    margin-top: 0px;
+    overflow: hidden;
+    flex-wrap: wrap ;
+    justify-content: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+}
+.items{
+    border: solid 5px; 
+    border-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    height: 450px;
+    font-size:  40px;
+    flex:1;
+    border-radius: 10px;
+    flex-shrink: 3;
+}
+
+img {
+    flex: 1;
+    width: 190px;
+    height: 190px;
+    border-radius: 10px;
+    flex-shrink: 3;
+    border: solid 1px;
+}
+
+/* img:hover {
+    width: 290px;
+    height: 290px;
+    cursor: pointer;
+    border-style: solid;
+    border-color: aliceblue;
+    border: 0px;
+} */
+
+img +p {
+    color:transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+/* img:hover +p {
+    color:yellow;
+    font-weight: 100;
+    font-size: 12px;
+} */
+
+img +p +p {
+    color:transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/* 
+img:hover +p +p{
+    color:yellow;
+    font-weight: 100;
+    font-size: 12px;
+} */
+
+img +p +p +p{
+    color:transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+/* img:hover +p +p +p{
+    color:white;
+    font-weight: 100;
+    font-size: 12px;
+} */
+
+img +p +p +p +p{
+    color:transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+img:focus-within::before{
+    font-weight: 100;
+    font-size: 12px;
+    background:red ;
+}
+
+.items p{
+    font-size: 10px;
+}
+
+@media all and (max-width:600px){
+
+.container{
+    width: 390px;
+}
+
+.container-movies{
+    width: 390px;
+}
+
+}
+
+.btn:focus-within{
+    position: initial;
+    content: '&#128420';
+  }
+
+  .container{
+
+    display:flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+icons{
+    font-size: xx-large;
+    display:flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+    background-size: contain;
+}
