@@ -97,18 +97,19 @@ img:focus-within::before{
 
 }
 
-.btn:focus-within{
-    position: initial;
-    content: '&#128420';
-  }
+.next:hover{
+    color: blue;
+}
 
-  .nodisplay {
+.prev:hover{
+    color: blue;
+}
+
+.nodisplay {
     display: none !important;
-  }
-  
+}
 
-  .f_usuario{
+.f_usuario{
     border-color: black;
     border-style: solid;
-
-  }
+}

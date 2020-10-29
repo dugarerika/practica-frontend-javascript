@@ -9,17 +9,24 @@
     <link rel ="stylesheet" href="css/icons.css">
     <script type="module" src="./js/app.js"></script>
 </head>
-<body>
+<body id='f_usuario' action="">
     <header>
     </header>
-    <main class="f_usuario">
+    <main >
         <p>Movies</p>
         <input type="text" id="api_key">
         <button type="click" id="b_movies">Obtener Peliculas</button>
+        <p>Now Playing</p>
         <div class="container-movies">
-            <section class="prev nodisplay"><span id="prev">prev</span></section>
+            <section class="prev "><span id="prev" class="prev">prev</span></section>
             <section class="items"></section>
-            <section class="next nodisplay"><span id="next">next</span></section>
+            <section class="next "><span id="next" class="next">next</span></section>
+        </div>
+        <p>Popular</p>
+        <div class="container-movies">
+            <section class="prev nodisplay"><span id="prev" class="prev">prev</span></section>
+            <section class="items"></section>
+            <section class="next nodisplay"><span id="next" class="next">next</span></section>
         </div>
             
 

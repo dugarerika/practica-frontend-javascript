@@ -5,6 +5,7 @@ import { templFooter } from '../templates/footer.js'
 function main() {
 
     // Encabezado
+    var contador = 0
     const posicion = window.location.pathname.lastIndexOf('/') + 1
     const page = window.location.pathname.slice(posicion)
     document.querySelector('header').innerHTML = templHeader.render(page)
@@ -19,17 +20,14 @@ function main() {
     // Formularios
     const formRegistro = document.querySelector('#f_registro')
     const formLogin = document.querySelector('#f_login')
-    const formUsuario = document.querySelector('#f_usuario')
+    const formUsuario = document.getElementById('#f_usuario')
 
     // Botones
     const btnMovies = document.querySelector('#b_movies')
+    const btnPrev = document.querySelector('#prev')
+    const btnNext = document.querySelector('#next')
 
     // Definicion de manejadores de eventos
-    if(btnMovies){
-        btnMovies.addEventListener('click', obtenerPeliculas)
-
-    }
-
     if(formRegistro){
     formRegistro.addEventListener('submit', registro)
         if(nacionalidad){
@@ -39,6 +37,19 @@ function main() {
 
     if (formLogin){
         formLogin.addEventListener('submit', acceder)
+
+    }
+
+
+    if (formUsuario){
+        formUsuario.addEventListener('load', obtenerPeliculas)
+
+    }
+
+    if(btnMovies){
+        btnMovies.addEventListener('click', obtenerPeliculas)
+        btnNext.addEventListener('click', nextPelicula)
+        btnPrev.addEventListener('click', prevPelicula)
     }
 
     function acceder(ev1){
@@ -55,6 +66,7 @@ function main() {
         JSON.parse(window.localStorage.getItem(storeUsers)) : []
         console.log(usuarios)
         login(usuarios,data1)
+        
     }
 
     function login(users,data){
@@ -78,6 +90,7 @@ function main() {
 
     // Funciones manejadoras
     function registro(ev){
+        
         const data2 = {}
         ev.preventDefault()
 
@@ -148,9 +161,92 @@ function main() {
     }
 
     function obtenerPeliculas(){
+
+        const clave  = '4b8423640b4850205df677351b0bb1d7'
+        const page = '1'
+        let url ='https://api.themoviedb.org/3/movie/now_playing?'
+        url += 'api_key=' + clave +'&' + 'page=' + page
+        
+        fetch(url)
+            .then(resp => {
+                console.log(resp)
+                if(resp.status <200 || resp.status >=300){
+                    console.log(resp.statusText)
+                    throw new Error('HTTP Error' + resp.status)
+                }
+                return resp.json()
+        })
+        .then(data => procesarPeliculas(data))
+        .catch(error => alert(error.message))
+    }
+
+    function procesarPeliculas(data,contador){
+        console.dir(data.results)
+        let start = (contador -1)* 4
+        let end = contador * 4
+        console.log(`start ${start} / end ${end} / contador ${contador}`)
+        const first_four= data.results.slice(start,end)
+
+        let html=''
+        first_four.forEach(element => {
+            html += `
+            <img src="https://image.tmdb.org/t/p/original/${element.poster_path}" alt="">
+            `
+        })
+
+        document.querySelector('section.items').innerHTML= html
+        document.querySelector('section.prev').classList.remove('nodisplay')
+        document.querySelector('section.next').classList.remove('nodisplay')
+    }
+
+    function nextPelicula(ev2){
+        console.log(ev2)
+        if (ev2.type == 'click'){
+            contador+=1
+        }
+        console.log(`next ${contador}`)
+
+        let url ='https://api.themoviedb.org/3/movie/now_playing?api_key=4b8423640b4850205df677351b0bb1d7&language=en-US&page=2'
+        
+        fetch(url)
+            .then(resp => {
+                console.log(resp)
+                if(resp.status <200 || resp.status >=300){
+                    console.log(resp.statusText)
+                    throw new Error('HTTP Error' + resp.status)
+                }
+                return resp.json()
+        })
+        .then(data => procesarPeliculas(data,contador))
+        .catch(error => alert(error.message))
+    }
+
+    function prevPelicula(ev2){
+        console.log(ev2)
+        if (ev2.type == 'click'){
+            contador-=1
+        }
+        console.log(`prev ${contador}`)
+
+        let url ='https://api.themoviedb.org/3/movie/now_playing?api_key=4b8423640b4850205df677351b0bb1d7&language=en-US&page=2'
+
+        fetch(url)
+            .then(resp => {
+                console.log(resp)
+                if(resp.status <200 || resp.status >=300){
+                    console.log(resp.statusText)
+                    throw new Error('HTTP Error' + resp.status)
+                }
+                return resp.json()
+        })
+        .then(data => procesarPeliculas(data,contador))
+        .catch(error => alert(error.message))
+    }
+
+    function conectarAPI(){
         const clave  = document.querySelector('#api_key').value
 
-        let url ='https://api.themoviedb.org/3/movie/now_playing?api_key=4b8423640b4850205df677351b0bb1d7&language=en-US&page=1'
+        let url ='https://api.themoviedb.org/3/movie/now_playing?api_key=4b8423640b4850205df677351b0bb1d7&language=en-US&page=2'
 
         fetch(url)
             .then(resp => {
@@ -165,42 +261,9 @@ function main() {
         .catch(error => alert(error.message))
     }
 
-    function procesarPeliculas(data){
-        console.dir(data.results)
 
-        let html=''
-        // data.results.forEach(element => {
-        //     html += `
-        //     <tr>
-        //     <td>${element.original_title}</td>
-        //     <td><img src="https://image.tmdb.org/t/p/original/${element.poster_path}" alt=""></td>
-        //     </tr>
-        //     `
-        // })
-
-        const first_four= data.results.slice(0,4)
-
-        first_four.forEach(element => {
-            html += `
-            
-            <img src="https://image.tmdb.org/t/p/original/${element.poster_path}" alt="">
-            `
-        })
-
-
-        document.querySelector('section.items').innerHTML= html
-        document.querySelector('section.prev').classList.remove('nodisplay')
-        document.querySelector('section.next').classList.remove('nodisplay')
-
-        // <p>${element.original_title}</p>
-        // <p>${element.overview}</p>
-        // data.results.original_title
-        // data.results.backdrop_path
-        // data.results.poster_path
-        // data.results.overview
-
-
-    }
+    
+    
 }
 
 document.addEventListener('DOMContentLoaded', main)
