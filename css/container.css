@@ -4,41 +4,50 @@ body{
 }
 
 .container-movies{
-    background-image: url("/img/background.jpg");
-    background-size: contain;
+
     background-color:transparent;
     display:flex;
     flex-direction: row;
-    max-width: 1200px;
-    margin-top: 0px;
+
+    align-items: center;
+    max-width: 2000px;
     overflow: hidden;
     flex-wrap: wrap ;
     justify-content: center;
     align-content: center;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
     border-radius: 30px;
+    border-color: black;
+    border-style: solid;
 }
 .items{
-    border: solid 5px; 
-    border-color: transparent;
     font-family: Arial, Helvetica, sans-serif;
+    border-color: transparent;
     text-align: center;
     font-weight: bold;
-    height: 450px;
+    height: 200px;
     font-size:  40px;
     flex:1;
     border-radius: 10px;
     flex-shrink: 3;
+    /* border-color: black; */
+    border-style: solid;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 img {
     flex: 1;
-    width: 190px;
-    height: 190px;
-    border-radius: 10px;
+    width: 180px;
+    height: 180px;
+    border-radius: 8px;
     flex-shrink: 3;
-    border: solid 1px;
+    border-color:white;
+    border-style: solid;
 }
 
 /* img:hover {
@@ -69,32 +78,6 @@ img +p +p {
     margin-left: 4px;
     margin-right: 4px;
 }
-/* 
-img:hover +p +p{
-    color:yellow;
-    font-weight: 100;
-    font-size: 12px;
-} */
-
-img +p +p +p{
-    color:transparent;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-left: 4px;
-    margin-right: 4px;
-}
-
-/* img:hover +p +p +p{
-    color:white;
-    font-weight: 100;
-    font-size: 12px;
-} */
-
-img +p +p +p +p{
-    color:transparent;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-left: 4px;
-    margin-right: 4px;
-}
 
 img:focus-within::before{
     font-weight: 100;
@@ -108,10 +91,6 @@ img:focus-within::before{
 
 @media all and (max-width:600px){
 
-.container{
-    width: 390px;
-}
-
 .container-movies{
     width: 390px;
 }
@@ -123,19 +102,13 @@ img:focus-within::before{
     content: '&#128420';
   }
 
-  .container{
+  .nodisplay {
+    display: none !important;
+  }
+  
 
-    display:flex;
-    flex-direction: row;
-    align-items: stretch;
-    align-content: stretch;
-}
+  .f_usuario{
+    border-color: black;
+    border-style: solid;
 
-icons{
-    font-size: xx-large;
-    display:flex;
-    flex-direction: row;
-    align-items: stretch;
-    align-content: stretch;
-    background-size: contain;
-}
+  }

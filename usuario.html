@@ -12,15 +12,17 @@
 <body>
     <header>
     </header>
-    <main>
+    <main class="f_usuario">
         <p>Movies</p>
         <input type="text" id="api_key">
         <button type="click" id="b_movies">Obtener Peliculas</button>
-        <div class="container">
-            <div class="icons"><span id="prev"><<</span></div>
-            <div class="container-movies"></div>
-            <div class="icons"><span id="next">>></span></div>
+        <div class="container-movies">
+            <section class="prev nodisplay"><span id="prev">prev</span></section>
+            <section class="items"></section>
+            <section class="next nodisplay"><span id="next">next</span></section>
         </div>
+            
+
 
         
         <!-- <table class="movies">

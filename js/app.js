@@ -19,6 +19,7 @@ function main() {
     // Formularios
     const formRegistro = document.querySelector('#f_registro')
     const formLogin = document.querySelector('#f_login')
+    const formUsuario = document.querySelector('#f_usuario')
 
     // Botones
     const btnMovies = document.querySelector('#b_movies')
@@ -181,16 +182,15 @@ function main() {
 
         first_four.forEach(element => {
             html += `
-            <section class="items">
+            
             <img src="https://image.tmdb.org/t/p/original/${element.poster_path}" alt="">
-
-            </section>
             `
         })
 
 
-        document.querySelector('div.container-movies').innerHTML= html
-
+        document.querySelector('section.items').innerHTML= html
+        document.querySelector('section.prev').classList.remove('nodisplay')
+        document.querySelector('section.next').classList.remove('nodisplay')
 
         // <p>${element.original_title}</p>
         // <p>${element.overview}</p>
